@@ -8,6 +8,7 @@ load_dotenv()
 # Lê a variável de ambiente
 api_key = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=api_key)
+
 print("chat ia com Groq iniciado!")
 print("Digite 'Sair' para encerrar")
 
