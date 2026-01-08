@@ -1,4 +1,4 @@
-#!/home/etienne/PycharmProjects/Python/IA/venv_coqui/bin/python3
+#!/home/etienne/PycharmProjects/Python/IA/venv_coqui/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

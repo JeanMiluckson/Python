@@ -1,29 +1,50 @@
+import asyncio
+import edge_tts
 from groq import Groq
-client = Groq(
-    api_key= "Api_key"
-)
-print("chat ia com Groq iniciado!")
-print("Digite 'Sair' para encerrar")
+import os
+import tempfile
+import subprocess
 
-while True:
-    user_input = input("Voce: ")
+client = Groq(api_key="api_key")
 
-    if user_input .lower() == "sair":
-        print("IA: Até mais")
-        break
+VOICE = "pt-BR-AntonioNeural"
 
+async def falar_async(texto):
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as f:
+        audio_path = f.name
+
+    communicate = edge_tts.Communicate(texto, voice=VOICE)
+    await communicate.save(audio_path)
+
+    subprocess.run(["mpg123", "-q", audio_path])
+    os.remove(audio_path)
+
+
+def falar(texto):
+    asyncio.run(falar_async(texto))
+
+
+def get_resposta(pergunta):
     response = client.chat.completions.create(
-        model = "llama-3.1-8b-instant",
-        messages=[
-            {
-                "role": "system",
-                "content": "Você é uma IA educada, Clara e didática."
-            },
-            {
-                "role": "user",
-                "content": user_input
-            }
-        ]
+        model="llama-3.1-8b-instant",
+        messages=[{"role": "user", "content": pergunta}]
     )
-    resposta = response.choices[0].message.content
-    print(f'IA: {resposta}\n')
+    return response.choices[0].message.content
+
+
+def main():
+    print("🤖 Assistente com voz natural (edge-tts)")
+    print("Digite 'sair' para encerrar.")
+
+    while True:
+        pergunta = input("\nVocê: ")
+        if pergunta.lower() == "sair":
+            break
+
+        resposta = get_resposta(pergunta)
+        print("\nAssistente:", resposta)
+        falar(resposta)
+
+
+if __name__ == "__main__":
+    main()
