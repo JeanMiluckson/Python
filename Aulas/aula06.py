@@ -1,8 +1,9 @@
 import random
 from math import sqrt
-import emoji
-num = random.randint(1,100)
+
+num = random.randint(1, 100)
 raiz = sqrt(num)
-print('\n',num)
-#print(f'\n {raiz:.2f}')
-print(emoji.emojize(f"Olá {raiz:.2f} :sunglasses:", language='alias'))
+
+print(num)
+print(f"{raiz:.2f}")
+print(f"Olá {raiz:.2f} 😎")
