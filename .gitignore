@@ -1,0 +1,15 @@
+# Ambiente virtual
+venv/
+IA/venv/
+
+# Variáveis de ambiente
+.env
+IA/.env
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# PyCharm
+.idea/
+
