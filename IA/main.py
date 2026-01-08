@@ -1,6 +1,6 @@
 from groq import Groq
 client = Groq(
-    api_key= "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"
+    api_key= "Api_key"
 )
 print("chat ia com Groq iniciado!")
 print("Digite 'Sair' para encerrar")
