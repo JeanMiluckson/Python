@@ -17,7 +17,7 @@ while True:
         messages=[
             {
                 "role": "system",
-                "content": "Você é uma IA educada, clara e didática."
+                "content": "Você é uma IA educada, Clara e didática."
             },
             {
                 "role": "user",
