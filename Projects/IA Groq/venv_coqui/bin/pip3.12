@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/etienne/PycharmProjects/Python/Projects/IA Groq/venv_coqui/bin/python3" "$0" "$@"
+'''exec' "/home/etienne/PycharmProjects/Python/Projects/IA Groq/venv_coqui/bin/python" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
